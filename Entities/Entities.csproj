@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="InMemory\" />
+    <Compile Remove="InMemory\**" />
+    <EmbeddedResource Remove="InMemory\**" />
+    <None Remove="InMemory\**" />
   </ItemGroup>
 
 </Project>
