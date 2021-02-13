@@ -14,7 +14,7 @@ namespace ConsoleUI
             //CategoryTest();
             IProductService productService = new ProductManager(new EfProductDal());
             var result = productService.GetProductDetails();
-            foreach (var item in result)
+            foreach (var item in result.Data)
             {
                 Console.WriteLine(item.ProductName + "&&&&& " + item.CategoryName);
             }
@@ -33,7 +33,7 @@ namespace ConsoleUI
         private static void ProductTest()
         {
             IProductService product = new ProductManager(new EfProductDal());
-            foreach (var item in product.GetByUnitPrice(20, 80))
+            foreach (var item in product.GetByUnitPrice(20, 80).Data)
             {
                 Console.WriteLine(item.ProductName);
             }

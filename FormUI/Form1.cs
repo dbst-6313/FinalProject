@@ -24,10 +24,15 @@ namespace FormUI
         {
             IProductService productService = new ProductManager(new EfProductDal());
             var result = productService.GetAll();
-            foreach (var item in result)
+            foreach (var item in result.Data)
             {
                 MessageBox.Show(item.ProductName);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
