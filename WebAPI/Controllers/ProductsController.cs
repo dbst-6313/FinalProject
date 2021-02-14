@@ -47,6 +47,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("deletebyid")]
+        public IActionResult Delete(int id)
+        {
+            var product = _productService.Get(id);
+            var result = _productService.Delete(product.Data);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         [HttpPost("post")]
         public IActionResult Post(Product product)
         {

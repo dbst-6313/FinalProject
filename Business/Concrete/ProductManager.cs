@@ -4,6 +4,7 @@ using Core.Utilities.Results;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -24,7 +25,7 @@ namespace Business.Concrete
         public IResult Add(Product product)
         {
             //business codes
-
+            
             if (product.ProductName.Length < 2)
             {
                 //magic strings
@@ -33,6 +34,18 @@ namespace Business.Concrete
             _productDal.Add(product);
 
             return new SuccessResult(Messages.ProductAdded);
+        }
+
+        public IResult Delete(Product product)
+        {
+            _productDal.Delete(product);
+            return new SuccessResult(Messages.ProductAdded);
+        }
+
+        public IDataResult<Product> Get(int id)
+        {
+           var res =  _productDal.Get(p => p.ProductId == id);
+            return new SuccessDataResult<Product>(res,Messages.ProductsListed);
         }
 
         public IDataResult<List<Product>> GetAll()
