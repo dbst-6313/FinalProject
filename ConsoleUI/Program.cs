@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
+
 using System;
 
 namespace ConsoleUI
@@ -21,7 +21,7 @@ namespace ConsoleUI
 
         }
 
-        private static void CategoryTest()
+        private static void Test1()
         {
             ICategoryService categoryService = new CategoryManager(new EfCategoryDal());
             foreach (var item in categoryService.GetAll())
@@ -30,7 +30,7 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
+        private static void Test2()
         {
             IProductService product = new ProductManager(new EfProductDal());
             foreach (var item in product.GetByUnitPrice(20, 80).Data)
